@@ -25,22 +25,16 @@ window.onload = function() {
   barEnter.style("color", "white");
   barEnter.style("font", "12px sans-serif");
   barEnter.style("text-align", "right");
+  barEnter.attr("data-color", "black");
 
-  // barEnter.on("click", function() {
-  //   console.log("clicked");
-  //
-  //   var newData = [8, 16, 30, 32, 46, 84];
-  //
-  //   var newBar = chart.selectAll("div");
-  //
-  //   var newBarUpdate = newBar.data(newData);
-  //
-  //   newBarUpdate.exit().remove();
-  //
-  //   var barUpdateClick = newBarUpdate.enter().append("div")
-  //     .merge("div")
-  //       .style("width", function(d) {return d * 10 + "px"})
-  //       .text(function(d) { return d; });
-  //
-  // });
+  barEnter.on("click", function() {
+    console.log(this.dataset.color);
+    if (this.dataset.color == "black") {
+      d3.select(this).transition().duration(1000).style("background-color", "steelblue");
+      d3.select(this).attr("data-color", "blue");
+    } else {
+      d3.select(this).transition().duration(1000).style("background-color", "black");
+      d3.select(this).attr("data-color", "black");
+    };
+  });
 }
